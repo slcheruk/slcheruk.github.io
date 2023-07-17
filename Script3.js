@@ -1,4 +1,3 @@
-// JavaScript source code
 let v = 0.0003;
 let v_new = v * 8;
 let H = 2.923;
@@ -106,7 +105,15 @@ for (let i = 0; i < nums.length; i++) {
 
 // Writing the final G-code to a file
 const fs = require('fs');
+function Triangle () {
 fs.writeFileSync('G-Code-trinagle.txt', Final.join('\n'));
 console.log("File written successfully\n");
 console.log("The written has the following contents:");
 console.log(fs.readFileSync("G-Code-trinagle.txt", "utf8"));
+}
+function Square () {
+fs.writeFileSync('G-Code-Square.txt', Final.join('\n'));
+console.log("File written successfully\n");
+console.log("The written has the following contents:");
+console.log(fs.readFileSync("G-Code-Square.txt", "utf8"));
+}
