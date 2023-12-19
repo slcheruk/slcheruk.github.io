@@ -1,8 +1,577 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Inter:wght@100;200;400;800;900&family=Playfair+Display+SC:wght@700&family=Yellowtail&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #left-column {
+            background-color: #204D43;
+            color: #53BD85;
+            padding: 10px;
+            width: 500px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        #right-column {
+            background-color: #204D43;
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        nav li {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        nav li a {
+            display: block;
+            color: white;
+            background-color:black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Style for sections in the right column */
+        .content-section {
+            margin-bottom: 40px;
+            border: 1px solid #fff;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+
+        }
+
+        /* Flip card styles */
+        .flip-card {
+            background-color: transparent;
+            width: 295px;
+            height: 300px;
+            perspective: 1000px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-card-back {
+            background-color: black;
+            color: white;
+            transform: rotateY(180deg);
+        }
+    
+    .centered-paragraph {
+        text-align: center;
+    }
+    
+
+</style>
+    <style> nav a {
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        transition: color 0.3s ease-in-out;
+    }
+
+    /* Hover effect for the navigation links */
+    nav a:hover {
+        color: #FFD700; /* Change to your desired hover color */
+    }
+
+    /* Styles for contact icons */
+    .contact-icons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: 165px; 
+    }
+
+    /* Style for the icon */
+    .contact-icons i {
+        font-size: 1.5rem;
+        
+    }
+    .container {
+  width: 300px;
+  height: 280px;
+  position: relative;
+  top: calc(50% - 140px);
+  left: calc(50% - 150px);
+}
+.coffee-header {
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ddcfcc;
+  border-radius: 10px;
+}
+.coffee-header__buttons {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 25px;
+  background-color: #282323;
+  border-radius: 50%;
+}
+.coffee-header__buttons::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  bottom: -8px;
+  left: calc(50% - 4px);
+  background-color: #615e5e;
+}
+.coffee-header__button-one {
+  left: 15px;
+}
+.coffee-header__button-two {
+  left: 50px;
+}
+.coffee-header__display {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  border-radius: 50%;
+  background-color: #9acfc5;
+  border: 5px solid #43beae;
+  box-sizing: border-box;
+}
+.coffee-header__details {
+  width: 8px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #9b9091;
+  box-shadow: -12px 0 0 #9b9091, -24px 0 0 #9b9091;
+}
+.coffee-medium {
+  width: 90%;
+  height: 160px;
+  position: absolute;
+  top: 80px;
+  left: calc(50% - 45%);
+  background-color: #bcb0af;
+}
+.coffee-medium:before {
+  content: "";
+  width: 90%;
+  height: 100px;
+  background-color: #776f6e;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 45%);
+  border-radius: 20px 20px 0 0;
+}
+.coffe-medium__exit {
+  width: 60px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 30px);
+  background-color: #231f20;
+}
+.coffe-medium__exit::before {
+  content: "";
+  width: 50px;
+  height: 20px;
+  border-radius: 0 0 50% 50%;
+  position: absolute;
+  bottom: -20px;
+  left: calc(50% - 25px);
+  background-color: #231f20;
+}
+.coffe-medium__exit::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: -30px;
+  left: calc(50% - 5px);
+  background-color: #231f20;
+}
+.coffee-medium__arm {
+  width: 70px;
+  height: 20px;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  background-color: #231f20;
+}
+.coffee-medium__arm::before {
+  content: "";
+  width: 15px;
+  height: 5px;
+  position: absolute;
+  top: 7px;
+  left: -15px;
+  background-color: #9e9495;
+}
+.coffee-medium__cup {
+  width: 80px;
+  height: 47px;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 40px);
+  background-color: #FFF;
+  border-radius: 0 0 70px 70px / 0 0 110px 110px;
+}
+.coffee-medium__cup::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 6px;
+  right: -13px;
+  border: 5px solid #FFF;
+  border-radius: 50%;
+}
+@keyframes liquid {
+  0% {
+    height: 0px;  
+    opacity: 1;
+  }
+  5% {
+    height: 0px;  
+    opacity: 1;
+  }
+  20% {
+    height: 62px;  
+    opacity: 1;
+  }
+  95% {
+    height: 62px;
+    opacity: 1;
+  }
+  100% {
+    height: 62px;
+    opacity: 0;
+  }
+}
+.coffee-medium__liquid {
+  width: 6px;
+  height: 63px;
+  opacity: 0;
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 3px);
+  background-color: #74372b;
+  animation: liquid 4s 4s linear infinite;
+}
+.coffee-medium__smoke {
+  width: 8px;
+  height: 20px;
+  position: absolute;  
+  border-radius: 5px;
+  background-color: #b3aeae;
+}
+@keyframes smokeOne {
+  0% {
+    bottom: 20px;
+    opacity: 0;
+  }
+  40% {
+    bottom: 50px;
+    opacity: .5;
+  }
+  80% {
+    bottom: 80px;
+    opacity: .3;
+  }
+  100% {
+    bottom: 80px;
+    opacity: 0;
+  }
+}
+@keyframes smokeTwo {
+  0% {
+    bottom: 40px;
+    opacity: 0;
+  }
+  40% {
+    bottom: 70px;
+    opacity: .5;
+  }
+  80% {
+    bottom: 80px;
+    opacity: .3;
+  }
+  100% {
+    bottom: 80px;
+    opacity: 0;
+  }
+}
+.coffee-medium__smoke-one {
+  opacity: 0;
+  bottom: 50px;
+  left: 102px;
+  animation: smokeOne 3s 4s linear infinite;
+}
+.coffee-medium__smoke-two {
+  opacity: 0;
+  bottom: 70px;
+  left: 118px;
+  animation: smokeTwo 3s 5s linear infinite;
+}
+.coffee-medium__smoke-three {
+  opacity: 0;
+  bottom: 65px;
+  right: 118px;
+  animation: smokeTwo 3s 6s linear infinite;
+}
+.coffee-medium__smoke-for {
+  opacity: 0;
+  bottom: 50px;
+  right: 102px;
+  animation: smokeOne 3s 5s linear infinite;
+}
+.coffee-footer {
+  width: 95%;
+  height: 15px;
+  position: absolute;
+  bottom: 25px;
+  left: calc(50% - 47.5%);
+  background-color: #41bdad;
+  border-radius: 10px;
+}
+.coffee-footer::after {
+  content: "";
+  width: 106%;
+  height: 26px;
+  position: absolute;
+  bottom: -25px;
+  left: -8px;
+  background-color: #000;
+}
+    
+    </style>
+    <title>Stationary Left, Scrollable Right</title>
+</head>
 <body>
-	<title>slcheruk.github.io<title>
-<h1>Hello World!</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+    <div id="left-column">
+        <h1 style="font-size: 70px; font-family: 'Yellowtail', cursive;">Seeva Cherukuri</h1>
+   
+
+        <nav>
+            <ul>
+                <li><a href="#section1"> <b>Education</b> </a></li>
+                <li><a href="#section2"><b> Employment</b> </a></li>
+                <li><a href="#section3"><b> Projects</b> </a></li>
+                <li><a href="#section4"><b> About Me</b> </a></li>
+            </ul>
+        </nav>
+        
+        <nav>
+           <p>&#160</p>
+           <p>&#160</p>
+    <a href="#"> </a>
+    <a href="#"></a>
+    <a href="#"></a>
+    <a href="#"></a>
+
+    <!-- Contact icons -->
+    <div class="contact-icons">
+        <a href="https://raw.githubusercontent.com/slcheruk/slcheruk.github.io/main/Seeva_Cherukuri_Resume 12_7_23.pdf" title="Resume">
+            <i class="fas fa-file-pdf"></i>
+        </a>
+        <a href="mailto:slcheruk@ncsu.edu" title="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/seeva-cherukuri/" title="LinkedIn" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+</nav>
+    </div>
+
+    <div id="right-column">
+        <!-- Sections to navigate to -->
+        <p>&#160</p>
+        <div class="container">
+            <div class="coffee-header">
+              <div class="coffee-header__buttons coffee-header__button-one"></div>
+              <div class="coffee-header__buttons coffee-header__button-two"></div>
+              <div class="coffee-header__display"></div>
+              <div class="coffee-header__details"></div>
+            </div>
+            <div class="coffee-medium">
+              <div class="coffe-medium__exit"></div>
+              <div class="coffee-medium__arm"></div>
+              <div class="coffee-medium__liquid"></div>
+              <div class="coffee-medium__smoke coffee-medium__smoke-one"></div>
+              <div class="coffee-medium__smoke coffee-medium__smoke-two"></div>
+              <div class="coffee-medium__smoke coffee-medium__smoke-three"></div>
+              <div class="coffee-medium__smoke coffee-medium__smoke-for"></div>
+              <div class="coffee-medium__cup"></div>
+            </div>
+            <div class="coffee-footer"></div>
+          </div>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <p>&#160</p>
+        <div id="section1" class="content-section">
+            
+            <h2 > Education</h2>
+            <i>North Carolina State University (joint with) UNC Chapel Hill</i>
+            <p>B.S, Biomedical Engineering | Minor, Nano-Science and Technology</p>
+            <p>GPA: 4.0</p>
+            <p><b>Relevant Coursework: </b>Computer Methods in Biomedical Engineering, Materials Science and Biomaterials, Design and Manufacturing in Biomedical Engineering, Organic Chemistry I, Biosensors and Microsystems, Bioinstrumentation</p>
+        </div>
+
+        <div id="section2" class="content-section">
+            <h2>Employment</h2>
+            <p><b>Nova Thin Film Pharmaceuticals</b> <i>Engineering Intern</i> | May 2023 - Present </p>
+            <p>Lead programmer in the development of a desktop app that generates G-code and firmware compatible with the Ender 3-D Printer. Designed supporting parts using CAD software for Hot Melt Extrusion technology.
+                Executed the modeling and printing of supporting machine parts using 3-D Resin printing technology. 
+                Created a wireless network used to 3D print on bluetooth technology using Raspberry Pi.
+                </p>
+            <p><b>Academic Success Center</b> <i>Peer Mentor</i> | August 2022 - May 2023</p>
+            <p>Provided academic guidance to NCSU students 4-6 hours per week for challenges such as time management, study scheduling and balancing academics and social activities.
+                Supported students in creating and achieving academic goals such as improving test-taking strategies, increasing grade point average, or reducing procrastination.
+                </p>
+        </div>
+
+        <div id="section3" class="content-section">
+            <h2>Projects & Leadership</h2>
+            
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        
+                        <img src="https://yt3.googleusercontent.com/lt4ejH-kPfoxIUKxCOc1apH5VqJrIRy_kJnZJI2vly0fzlaecOXX3yUZsZxLgtwfjz2JDG6ILA=s900-c-k-c0x00ffffff-no-rj" alt="Project 1 Image" style="width: 100%; height: 100%;">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>&#160</p>
+                        <b>Head of Human Practices </b>
+                       <p><i>Drafted Neuroethical Report on the ethics of gene editing relating to an experiment using CRISPR technology to reveal the link between gut bacteria and Alzheimer's Disease </i></p> 
+                           <p> Presented these findings in Paris at the 2023 iGEM competition. </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flip card 2 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                       
+                        <img src="https://brand.mit.edu/sites/default/files/styles/tile_narrow/public/2023-08/logo-colors-BG-black.png?itok=Ol3Nb7wg" alt="Project 1 Image" style="width: 100%; height: 100%;">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>&#160</p>
+                        <p><b>MIT Hackathon 2022</b></p>
+                        <p><i>Won second place in the MIT Hacking Medicine Challenge</i></p>
+                        <p>Worked with a team to develop the prototype for a mobile app to allow for the transfer of medical data to hospitals through NFC technology </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flip card 3 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                       
+                        <img src="data:image/png;base64,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" alt="Project 1 Image" style="width: 100%; height: 100%;">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>&#160</p>
+                        <p><b>Alumni Chair</b></p>
+                        <p><i>Volunteer 50+ hours each year for organizations around the Raleigh community</i></p>
+                          <p>  Drafted the monthly newsletter to be sent out to the alumni network
+                            </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flip card 4 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        
+                        <img src="https://www.southern.edu/administration/student-development/activities/img/club_logos/WomenInStem.png" alt="Project 1 Image" style="width: 100%; height: 100%;">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>&#160</p>
+                        <b>President</b>
+                       <p><i>Women in Science and Engineering Student Council 
+                        
+                        </i></p> 
+                           <p>Facilitated inclusive events and promoted wellness and community service for students in WISE</p>
+                        
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="section4" class="content-section">
+            <h2>About Me</h2>
+            <p>Welcome to my personal website! I am a passionate biomedical engineering student with a focus on medical microdevices. Feel free to explore my education, employment, and projects to learn more about my journey and accomplishments.</p>
+            <p>In my freetime I love to volunteer, go on long runs, and travel, especially to national parks and historical sites. </p> 
+        </div>
+    </div>
+
 </body>
 </html>
